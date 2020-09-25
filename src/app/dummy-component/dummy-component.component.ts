@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-dummy-component',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dummy-component.component.scss']
 })
 export class DummyComponentComponent implements OnInit {
+name:String;
+  constructor( private route: ActivatedRoute) { 
+    }
 
-  constructor() { }
-
-  ngOnInit(): void {
+  ngOnInit() {this.route.queryParams.subscribe(params => {
+    this.name = params['name'];
+  });
   }
 
 }

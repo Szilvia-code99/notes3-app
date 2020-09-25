@@ -1,6 +1,4 @@
 
-<p>ssssssssss</p>
-
 <!--
 <div *ngFor="let element of numbers; let i=index; let even=even" >
     <p *ngIf="even==true"> {{element}} </p>
@@ -11,7 +9,6 @@
 [foregroundColor]="'white'"
 [hoverBackgroundColor]="'yellow'"
 [hoverForegroundColor]="'red'"
--->
 
 <p class="wordColor"></p>
 
@@ -23,3 +20,23 @@
 
 
 <h1 dirChangeColor>Highlight Me !</h1>
+-->
+
+<div *ngFor="let note of notes ">
+    <mat-card class="note-card" >
+        <mat-card-header>
+            <mat-card-title> 
+                {{note.title}}
+            </mat-card-title>
+        </mat-card-header>
+  
+        <mat-card-content>
+           <p>{{note.description}}</p> 
+        </mat-card-content>
+  </mat-card>
+</div>
+
+  
+
+
+

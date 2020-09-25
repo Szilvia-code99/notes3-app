@@ -18,12 +18,32 @@ import { FilterComponent } from './filter/filter.component';
 import { MatCardModule } from "@angular/material/card";
 import { AddHyphenPipe } from './add-hyphen.pipe';
 import { ChangeColorDirective } from './change-color.directive';
+import { AddNoteComponent } from './add-note/add-note.component';
+import { HomeComponent } from './home/home.component';
+import { RouterModule, Routes } from '@angular/router';
+
+const appRoutes:Routes=[
+
+  {
+     path:"", component: HomeComponent, pathMatch:"full" 
+  },
+  {
+    path: "app-dummy-component", component: DummyComponentComponent
+ },
+  {
+     path: "add-note", component: AddNoteComponent
+  },
+  { 
+    path: '**', redirectTo: ''
+  }
+
+]
 
 
 
 @NgModule({
   declarations: [
-    AppComponent,DummyComponentComponent, NoteComponent, ToolsComponent, FilterComponent, AddHyphenPipe, ChangeColorDirective
+    AppComponent,DummyComponentComponent, NoteComponent, ToolsComponent, FilterComponent, AddHyphenPipe, ChangeColorDirective, AddNoteComponent, HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -36,6 +56,7 @@ import { ChangeColorDirective } from './change-color.directive';
     MatFormFieldModule,
     FormsModule,
     MatCardModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]

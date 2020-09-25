@@ -1,0 +1,15 @@
+<p>Add note</p>
+
+<form class="add-note-form">
+    <mat-form-field>
+        <input matInput name="noteTitle" [(ngModel)]="noteTitle" placeholder="title" />
+    </mat-form-field>
+    <mat-form-field>
+        <textarea matInput  name="noteDescription" [(ngModel)]="noteDescription" placeholder="description"></textarea>
+    </mat-form-field>
+    <button mat-button>Add</button>
+</form>
+
+ <!-- <p>Note title: {{noteTitle}}</p>
+ <p>NoteDescription: {{noteDescription}}</p>-->
+ 
