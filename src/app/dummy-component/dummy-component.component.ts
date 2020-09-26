@@ -11,9 +11,9 @@ name:String;
   constructor( private route: ActivatedRoute) { 
     }
 
-  ngOnInit() {this.route.queryParams.subscribe(params => {
-    this.name = params['name'];
-  });
+  ngOnInit() {
+    console.log(this.route.snapshot.params);
+    this.name = this.route.snapshot.params.name;
   }
 
 }

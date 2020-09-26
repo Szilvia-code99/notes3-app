@@ -28,7 +28,7 @@ const appRoutes:Routes=[
      path:"", component: HomeComponent, pathMatch:"full" 
   },
   {
-    path: "app-dummy-component", component: DummyComponentComponent
+    path: "app-dummy-component/:name", component: DummyComponentComponent
  },
   {
      path: "add-note", component: AddNoteComponent
