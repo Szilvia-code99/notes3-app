@@ -1,14 +1,18 @@
-.note-card {
-          max-width: 150px;
-          min-height: 150px;
-          flex: 1;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          background-color: aquamarine;
-          margin:10px;
-          float: left;
-    }
 
+.float-card{
+ display: flex; 
+ flex-direction: row;
+ background-color:red;
+ 
+    .note-card {
+      max-width: 150px;
+      min-height: 150px;
+      flex: 1 0 48%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: aquamarine;
+      margin:10px;
+  }
+}
 
-    
