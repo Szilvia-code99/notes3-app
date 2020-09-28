@@ -21,6 +21,8 @@ import { ChangeColorDirective } from './change-color.directive';
 import { AddNoteComponent } from './add-note/add-note.component';
 import { HomeComponent } from './home/home.component';
 import { RouterModule, Routes } from '@angular/router';
+import { NoteService } from './note.service';
+import { FilterService } from './filter.service';
 
 const appRoutes:Routes=[
 
@@ -58,7 +60,7 @@ const appRoutes:Routes=[
     MatCardModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [ NoteService,FilterService ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

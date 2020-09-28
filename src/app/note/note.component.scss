@@ -1,18 +1,34 @@
 
 .float-card{
- display: flex; 
+ display:  inline-flex; 
  flex-direction: row;
- background-color:red;
- 
-    .note-card {
-      max-width: 150px;
-      min-height: 150px;
-      flex: 1 0 48%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: aquamarine;
-      margin:10px;
   }
-}
+
+  .note-card {
+    max-width: 150px;
+    min-height: 150px;
+  //  flex: 1;
+  //display:  flex;
+    //justify-content: center;
+   // align-items: center;
+  // flex-direction: column;
+    background-color: aquamarine;
+    margin:10px;
+  }
+  
+  .forward-icon{
+     //position: absolute;
+   //  vertical-align: bottom;
+    // float:left;
+    //  justify-content: flex-start;
+    //  align-items:flex-end;
+     // vertical-align: middle;
+     // display:flex;
+     
+    }
+
+    .star-icon{
+      position: absolute;
+    }
+
 

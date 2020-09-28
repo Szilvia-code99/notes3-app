@@ -1,6 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import {Note} from '../note';
+import { NoteService } from '../note.service';
 
 @Component({
   selector: 'app-note',
@@ -14,21 +15,11 @@ export class NoteComponent implements OnInit {
  result=1;
  numbers=["bor","palinka","sor","vodka","jager"];
   */
- notes: Note[] = [
-  {
-    id: "Id1",
-    title: "First note",
-    description: "This is the description for the first note"
-  },
-  {
-    id: "Id1",
-    title: "Second note",
-    description: "This is the description for the second note"
-  }
-];
+ notes:Note[];
 
 
- constructor( ) { }
+ constructor( private noteService: NoteService ) { }
   ngOnInit(): void {
+   this.notes= this.noteService.getNotes();
   }
 }
