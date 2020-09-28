@@ -16,7 +16,11 @@ export class NoteComponent implements OnInit {
  numbers=["bor","palinka","sor","vodka","jager"];
   */
  notes:Note[];
+ colors:string[]=['salmon','yellow','palegreen','blue','purple','red','orange'];
 
+  getRandomColor() {
+   return this.colors[Math.floor(Math.random() * this.colors.length)]; 
+  }
 
  constructor( private noteService: NoteService ) { }
   ngOnInit(): void {

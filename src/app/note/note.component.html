@@ -23,9 +23,9 @@
 -->
 
 <div *ngFor="let note of notes " class="float-card">
-    <mat-card class="note-card" >
+    <mat-card class="note-card" [style.background-color]='getRandomColor()'  >
         <mat-card-header>
-            <mat-card-title> 
+            <mat-card-title class="note-title"> 
                 {{note.title}}
             </mat-card-title>
         </mat-card-header>
@@ -33,10 +33,16 @@
         <mat-card-content>
            <p>{{note.description}}</p> 
         </mat-card-content>
-
+<div class="left-icon-buttons">
     <button mat-icon-button  class="forward-icon"><mat-icon>forward</mat-icon></button>
     <button mat-icon-button  class="star-icon"><mat-icon>star_half</mat-icon></button>
-  </mat-card>
+    <button mat-icon-button  class="check-icon"><mat-icon>check</mat-icon></button>
+</div>
+<div class="right-icon-buttons">
+    <button mat-icon-button  class="edit-icon"><mat-icon>edit</mat-icon></button>
+    <button mat-icon-button  class="delete-icon"><mat-icon>delete</mat-icon></button>
+</div>
+</mat-card>
 </div>
 
   

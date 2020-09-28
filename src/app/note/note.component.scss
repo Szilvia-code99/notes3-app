@@ -5,30 +5,27 @@
   }
 
   .note-card {
-    max-width: 150px;
-    min-height: 150px;
-  //  flex: 1;
-  //display:  flex;
-    //justify-content: center;
-   // align-items: center;
-  // flex-direction: column;
-    background-color: aquamarine;
+    max-width: 200px;
+    min-height: 200px;
+  
+    flex-direction: column;
     margin:10px;
   }
-  
-  .forward-icon{
-     //position: absolute;
-   //  vertical-align: bottom;
-    // float:left;
-    //  justify-content: flex-start;
-    //  align-items:flex-end;
-     // vertical-align: middle;
-     // display:flex;
-     
-    }
 
-    .star-icon{
+
+    .left-icon-buttons{
+    
+      left:0px;
       position: absolute;
+      bottom:0px;
     }
 
-
+    
+    .right-icon-buttons{
+    
+      right:0px;
+      position: absolute;
+      bottom:0px;
+    }
+    
+   

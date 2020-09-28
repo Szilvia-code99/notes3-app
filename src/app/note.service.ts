@@ -5,6 +5,7 @@ import { Note } from './note';
   providedIn: 'root'
 })
 export class NoteService {
+  
   notes: Note[] = [
     {
       id: "Id1",
