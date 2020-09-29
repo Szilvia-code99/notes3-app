@@ -1,8 +1,8 @@
 <a routerLink="/app-dummy-component/{{name}}">Go to dummy </a>
 <div class="notes-and-filter-container">
-<app-filter></app-filter>
+<app-filter (filterEmitter)="receiveFilterId($event)"></app-filter>
 <div class="notes-container">
-    <app-note></app-note>
+    <app-note [categoryId]="categoryId"></app-note>
     <app-tools></app-tools>
 </div>
 </div>

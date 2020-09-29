@@ -22,5 +22,7 @@ export class FilterService {
   getCategories(): Category[] {
   return this.categories;
   }
+
+  
   
 }
