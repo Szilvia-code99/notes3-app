@@ -23,7 +23,7 @@
 -->
 
 <div *ngFor="let note of notes " class="float-card">
-    <mat-card class="note-card" [style.background-color]='getRandomColor()'  >
+    <mat-card class="note-card"  [ngStyle]="{'backgroundColor': note.color,'color':note.textColor}"  >
         <mat-card-header>
             <mat-card-title class="note-title"> 
                 {{note.title}}
@@ -31,16 +31,18 @@
         </mat-card-header>
   
         <mat-card-content>
-           <p>{{note.description}}</p> 
+           <p>{{note.text}}</p> 
         </mat-card-content>
+        <div class="buttons">
 <div class="left-icon-buttons">
     <button mat-icon-button  class="todo-icon" [disabled]="disableToDoButton(note)" ><mat-icon>forward</mat-icon></button>
     <button mat-icon-button  class="doing-icon" [disabled]="disableDoingButton(note)" (click)="changeCategoryToDoing(note)" ><mat-icon>star_half</mat-icon></button>
     <button mat-icon-button  class="done-icon" [disabled]="disableDoneButton(note)" (click)="changeCategoryToDone(note)"><mat-icon>check</mat-icon></button>
 </div>
 <div class="right-icon-buttons">
-    <button mat-icon-button  class="edit-icon" [disabled]="true"><mat-icon>edit</mat-icon></button>
-    <button mat-icon-button  class="delete-icon"><mat-icon>delete</mat-icon></button>
+    <button mat-icon-button  class="edit-icon" ><mat-icon>edit</mat-icon></button>
+    <button mat-icon-button  class="delete-icon" (click)="deleteNote(note)"><mat-icon>delete</mat-icon></button>
+</div>
 </div>
 </mat-card>
 </div>

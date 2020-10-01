@@ -12,7 +12,7 @@ import { ToolsComponent } from './tools/tools.component';
 import{ MatButtonModule} from '@angular/material/button';
 import{ MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
-import { MatFormFieldModule} from '@angular/material/form-field';
+import { MatFormFieldModule, MatLabel} from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { FilterComponent } from './filter/filter.component';
 import { MatCardModule } from "@angular/material/card";
@@ -23,29 +23,23 @@ import { HomeComponent } from './home/home.component';
 import { RouterModule, Routes } from '@angular/router';
 import { NoteService } from './note.service';
 import { FilterService } from './filter.service';
-
-const appRoutes:Routes=[
-
-  {
-     path:"", component: HomeComponent, pathMatch:"full" 
-  },
-  {
-    path: "app-dummy-component/:name", component: DummyComponentComponent
- },
-  {
-     path: "add-note", component: AddNoteComponent
-  },
-  { 
-    path: '**', redirectTo: ''
-  }
-
-]
-
+import { NotesRandomColorDirective } from './notes-random-color.directive';
+import { HttpClientModule } from '@angular/common/http';
+import {MatSelectModule} from '@angular/material/select';
 
 
 @NgModule({
   declarations: [
-    AppComponent,DummyComponentComponent, NoteComponent, ToolsComponent, FilterComponent, AddHyphenPipe, ChangeColorDirective, AddNoteComponent, HomeComponent
+    AppComponent,
+    DummyComponentComponent,
+     NoteComponent,
+      ToolsComponent,
+       FilterComponent,
+        AddHyphenPipe,
+         ChangeColorDirective,
+          AddNoteComponent,
+          HomeComponent,
+          NotesRandomColorDirective
   ],
   imports: [
     BrowserModule,
@@ -58,11 +52,12 @@ const appRoutes:Routes=[
     MatFormFieldModule,
     FormsModule,
     MatCardModule,
-    RouterModule.forRoot(appRoutes)
+    AppRoutingModule,
+    MatSelectModule,
+    HttpClientModule
   ],
-  providers: [ NoteService,FilterService ],
+  providers: [ NoteService, FilterService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
- 
  }

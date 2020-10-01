@@ -1,5 +1,7 @@
+import { NotExpr } from '@angular/compiler';
 import { Input, OnChanges, Pipe, PipeTransform } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import {Note} from '../note';
 import { NoteService } from '../note.service';
 
@@ -15,70 +17,64 @@ export class NoteComponent implements OnInit , OnChanges{
  result=1;
  numbers=["bor","palinka","sor","vodka","jager"];
   */
- notes:Note[];
- colors:string[]=['salmon','yellow','palegreen','blue','purple','red','orange'];
- @Input() categoryId:String="nothing";
-
- //disableToDoButton=false;
- //disableDoingButton=false;
- //disableDoneButton=false;
-
-  getRandomColor() {
-   return this.colors[Math.floor(Math.random() * this.colors.length)]; 
-  }
+ subscription: Subscription;
+ notes: Note[];
+ note:Note={id:"10000000-0000-0000-0000-000000000000",title:"NewNote",text:"New Text",category:"1",ownerId:"00000000-0000-0000-0000-000000000009",textColor:"black",color:"pink",pinned:true};
+ 
+ @Input() categoryId = 'nothing';
 
  constructor( private noteService: NoteService ) { }
   ngOnInit(): void {
-   this.notes= this.noteService.getNotes();
-   this.noteService.serializeObjectToJson()
-
+   this.subscription = this.noteService.getNotes().subscribe((notes) => (this.notes = notes));
+   this.noteService.deleteNote(this.note);
+   //this.noteService.updateNoteCategory(this.note , '2');
   }
 
-  ngOnChanges():void{
+  ngOnChanges(): void{
     if(this.categoryId){
-      this.notes=this.noteService.getFilteredNotes(this.categoryId);
+    this.noteService.getFilteredNotes(this.categoryId).subscribe((filteredNotes) => (this.notes = filteredNotes));
     }
   }
 
-   disableToDoButton(note:Note){
-    if(note.categoryId=="3" || note.categoryId=="2" ){
+   disableToDoButton(note: Note){
+    if (note.category === '3' || note.category === '2' || note.category === '1'){
        return true;
     } else {
       return false;
     }
   }
-    disableDoingButton(note:Note){
-      if(note.categoryId=="2" || note.categoryId=="3"){
+    disableDoingButton(note: Note){
+      if (note.category === '2' || note.category === '3'){
          return true;
       } else {
         return false;
       }
   }
 
-  disableDoneButton(note:Note){
-    if(note.categoryId=="3"){
+  disableDoneButton(note: Note){
+    if(note.category === '3'){
        return true;
     } else {
       return false;
     }
   }
 
-  changeCategoryToDoing(note:Note){
-    this.noteService.changeCategoryOfNote(note,"2");
-    console.log(note.categoryId);
-  //  this.disableToDoButton(note);
-   // this.notes= this.noteService.getNotes();
+  changeCategoryToDoing(note: Note): void{
+    this.noteService.updateNoteCategory(note, '2');
+    this.subscription = this.noteService.getNotes().subscribe((notes) => (this.notes = notes));
+    this.ngOnInit();
   }
 
-  changeCategoryToDone(note:Note){
-    console.log(this.notes[0].categoryId);
-    console.log(this.notes[1].categoryId);
-    this.noteService.changeCategoryOfNote(note,"3");
-  
+  changeCategoryToDone(note: Note): void{
+    this.noteService.updateNoteCategory(note, '3');
+    this.subscription = this.noteService.getNotes().subscribe((notes) => (this.notes = notes));
+    this.ngOnInit();
+  }
 
-   // this.disableDoneButton(note);
-    this.notes= this.noteService.getNotes();
-    console.log(this.notes[0].categoryId);
-    console.log(this.notes[1].categoryId);
-}
+  deleteNote(note: Note): void{
+    this.noteService.deleteNote(note);
+    this.subscription = this.noteService.getNotes().subscribe((notes) => (this.notes = notes));
+    this.ngOnInit();
+  }
+
 }

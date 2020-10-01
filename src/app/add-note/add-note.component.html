@@ -7,6 +7,19 @@
     <mat-form-field>
         <textarea matInput  name="noteDescription" [(ngModel)]="noteDescription" placeholder="description"></textarea>
     </mat-form-field>
+    <mat-form-field >
+        <mat-label>Choose a category </mat-label>
+        <mat-select *ngIf="categories">
+            <mat-option
+             *ngFor="let categ of categories" 
+             [value]="categ.id"
+             [(ngModel)]="idCategoryNote"  name="categ"
+            >
+            {{categ.name}}
+        </mat-option>
+        </mat-select>
+    </mat-form-field> 
+    
     <button mat-button>Add</button>
 </form>
 

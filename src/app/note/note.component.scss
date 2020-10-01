@@ -1,26 +1,20 @@
 
 .float-card{
  display:  inline-flex; 
- flex-direction: row;
   }
 
   .note-card {
-    max-width: 200px;
-    min-height: 200px;
-  
-    flex-direction: column;
+    width: 200px;
+    height: 200px;
     margin:10px;
   }
-
-
     .left-icon-buttons{
     
       left:0px;
-      position: absolute;
+      position:absolute;
       bottom:0px;
     }
 
-    
     .right-icon-buttons{
     
       right:0px;
@@ -28,4 +22,5 @@
       bottom:0px;
     }
     
+  
    

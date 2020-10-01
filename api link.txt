@@ -1,0 +1,1 @@
+https://dev-notesapi.mepdevelopment.com/api/swagger/index.html
