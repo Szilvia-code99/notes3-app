@@ -13,6 +13,9 @@ noteTitle: string;
 noteDescription: string;
 categories: Category[];
 idCategoryNote: string;
+noteColor: string;
+textColor: string;
+colors: string[] = ['salmon', 'yellow', 'palegreen', 'blue', 'purple', 'red', 'orange' , 'white', 'black'];
 
 
   constructor(
@@ -22,5 +25,11 @@ idCategoryNote: string;
   ngOnInit(): void {
     this.categories = this.filterService.getCategories();
   }
+
+  addNote(): void{
+    this.noteService.addNote(this.noteTitle, this.noteDescription , this.textColor, this.noteColor, this.idCategoryNote);
+  }
+
+
 
 }

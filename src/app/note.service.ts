@@ -19,29 +19,29 @@ export class NoteService {
     })
   };
   constructor(private httpClient: HttpClient) { }
-  
   getNotes(): Observable<Note[]> {
     return this.httpClient.get<Note[]>(
       this.baseUrl + `/notes/owner/${this.ownerId}`,
       this.httpOptions);
   }
 
-  addNote(note: Note): void {
-    this.httpClient.post<Note>( this.baseUrl + `/Notes`,{
-      id:	note.id,
-      title: note.title,
-      text: note.text,
-      category: note.category,
-      ownerId: note.ownerId,
-      textColor: note.textColor,
-      color: note.color,
-      pinned: note.pinned}, this.httpOptions).subscribe({
+  addNote(notetitle: string, notetext: string, notetextcolor: string, notecolor: string, notecategory: string): void {
+    let note = {
+      text: notetext,
+      title: notetitle,
+      textColor: notetextcolor,
+      color: notecolor,
+      ownerId: this.ownerId,
+      category: notecategory,
+      pinned: true
+    };
+    this.httpClient.post<Note>( this.baseUrl + `/Notes`, note, this.httpOptions).subscribe({
         error: error => console.error('There was an error!', error)});
   }
 
   updateNoteCategory(note: Note, newCategory: string): void{
-    this.httpClient.put<Note>( this.baseUrl + `/Notes/${note.id}`,{
-      id:	note.id,
+    this.httpClient.put<Note>( this.baseUrl + `/Notes/${note.id}`, {
+      id: note.id,
       title: note.title,
       text: note.text,
       category: newCategory,
@@ -50,8 +50,7 @@ export class NoteService {
       color: note.color,
       pinned: note.pinned}, this.httpOptions).subscribe(
         val => {
-            console.error('PUT call successful value returned in body', 
-                        val);
+            console.error('PUT call successful value returned in body', val);
         },
         response => {
             console.error('PUT call in error', response);
@@ -67,8 +66,7 @@ export class NoteService {
       this.baseUrl + `/Notes/${note.id}`,
       this.httpOptions).subscribe(
         val => {
-            console.error('PUT call successful value returned in body', 
-                        val);
+            console.error('PUT call successful value returned in body', val);
         },
         response => {
             console.error('PUT call in error', response);
@@ -90,7 +88,8 @@ export class NoteService {
     );
 }
 
-//old version
+}
+// old version
    /*changeCategoryOfNote(pressedNote: Note, newCategoryId: string): void{
 
     for(let i = 0; i < this.notes.length; i++) {
@@ -99,4 +98,3 @@ export class NoteService {
        }
      }
    }*/
-  }

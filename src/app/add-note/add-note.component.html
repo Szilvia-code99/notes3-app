@@ -1,6 +1,7 @@
-<p>Add note</p>
 
-<form class="add-note-form">
+
+<form class="add-note-form" [ngStyle]="{'background-color':noteColor,'color':textColor}">
+    <p>Add note</p>
     <mat-form-field>
         <input matInput name="noteTitle" [(ngModel)]="noteTitle" placeholder="title" />
     </mat-form-field>
@@ -9,18 +10,43 @@
     </mat-form-field>
     <mat-form-field >
         <mat-label>Choose a category </mat-label>
-        <mat-select *ngIf="categories">
+        <mat-select *ngIf="categories"  [(ngModel)]="idCategoryNote"  name="categ">
             <mat-option
              *ngFor="let categ of categories" 
              [value]="categ.id"
-             [(ngModel)]="idCategoryNote"  name="categ"
             >
             {{categ.name}}
         </mat-option>
         </mat-select>
     </mat-form-field> 
+
+    <mat-form-field >
+        <mat-label>Choose a background color </mat-label>
+        <mat-select *ngIf="colors"   [(ngModel)]="noteColor"  name="notecolor">
+            <mat-option
+             *ngFor="let color of colors" 
+             [value]="color"
+            >
+            {{color}}
+        </mat-option>
+        </mat-select>
+    </mat-form-field> 
+
+    <mat-form-field >
+        <mat-label>Choose a font color </mat-label>
+        <mat-select *ngIf="colors"  [(ngModel)]="textColor"  name= "textcolor">
+            <mat-option
+             *ngFor="let color of colors" 
+             [value]="color"
+            >
+            {{color}}
+        </mat-option>
+        </mat-select>
+    </mat-form-field> 
     
-    <button mat-button>Add</button>
+  
+  
+    <button mat-button (click)="addNote()">Add</button>
 </form>
 
  <!-- <p>Note title: {{noteTitle}}</p>
