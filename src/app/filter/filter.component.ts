@@ -8,17 +8,17 @@ import { FilterService } from '../filter.service';
   styleUrls: ['./filter.component.scss']
 })
 export class FilterComponent implements OnInit {
-  categories :Category[] ;
-  @Output() filterEmitter: EventEmitter<string>=new EventEmitter<string>();
+  categories: Category[] ;
+  @Output() filterEmitter: EventEmitter<string> = new EventEmitter<string>();
   
 
- sendFilterId(categoryId:string): void{
+ sendFilterId(categoryId: string): void{
     this.filterEmitter.emit(categoryId);
   }
-  constructor(private filterService:FilterService) { }
+  constructor(private filterService: FilterService) { }
 
   ngOnInit(): void {
-    this.categories=this.filterService.getCategories();
+    this.categories = this.filterService.getCategories();
   }
 
   

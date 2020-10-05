@@ -22,4 +22,12 @@ describe('HomeComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('receiveFilterId', () =>{
+    const categId =  'testId';
+    component.receiveFilterId(categId);
+    expect(component.categoryId).not.toBe(null);
+    expect(component.categoryId).toBe(categId);
+
+  })
 });

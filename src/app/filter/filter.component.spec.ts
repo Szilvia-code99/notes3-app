@@ -1,4 +1,6 @@
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FilterService } from '../filter.service';
 
 import { FilterComponent } from './filter.component';
 
@@ -8,7 +10,9 @@ describe('FilterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FilterComponent ]
+      declarations: [ FilterComponent ],
+      providers: [FilterService],
+      imports: [HttpClientModule],
     })
     .compileComponents();
   });
@@ -22,4 +26,10 @@ describe('FilterComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('sendFilterId', () => {
+    spyOn(component.filterEmitter, "emit");
+    component.sendFilterId("test");
+    expect(component.filterEmitter.emit).toHaveBeenCalledTimes(1);
+  })
 });
